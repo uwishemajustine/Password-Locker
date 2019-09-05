@@ -1,6 +1,13 @@
-class Person Information:
+class PersonInfo:
     """
-    Class that generates new instances of Person Information
+    Class that generates new instances of PersonInfo
     """
 
-    pass
+    PersonInfo_list = [] 
+
+    def __init__(self,login,username,password,email):
+
+        self.login = login
+        self.username = username
+        self.password = password
+        self.email = email
