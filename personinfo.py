@@ -31,4 +31,16 @@ class personinfo:
 
         personinfo.personinfo_list.remove(self)
 
-   
+    @classmethod
+    def find_by_username(cls,username):
+        '''
+        Method that takes in a username and returns a personinfo that matches that personinfo.
+        Args:
+            username: username to search for
+        Returns :
+            personinfo of person that matches the number.
+        '''
+
+        for personinfo in cls.personinfo_list:
+            if personinfo.username == username:
+                return personinfo
