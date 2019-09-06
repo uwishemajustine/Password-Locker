@@ -52,15 +52,15 @@ class Testpersoninfo(unittest.TestCase):
         self.assertEqual(len(personinfo.personinfo_list),2)
 
     def test_delete_personinfo(self):
-        '''
-        test_delete_personinfo to test if we can remove a personinfo from our personinfo list
-        '''
-        self.new_personinfo.save_personinfo()
-        test_personinfot = personinfo("Jasmine","Uwishema","8882","uwishema10@gmail.com")
-        test_personinfo.save_personinfo()
+                '''
+                test_delete_personinfo to test if we can remove a personinfo from our personinfo list
+                '''
+                self.new_personinfo.save_personinfo()
+                test_personinfo = personinfo("Jasmine","Uwishema","8882","uwishema10@gmail.com")
+                test_personinfo.save_personinfo()
 
-        self.new_personinfo.delete_personinfo()
-        self.assertEqual(len(Personinfo.personinfo_list),1)    
+                self.new_personinfo.delete_personinfo()# Deleting a personinfo object
+                self.assertEqual(len(personinfo.personinfo_list),1)
 
 if __name__ == '__main__':
     unittest.main() 

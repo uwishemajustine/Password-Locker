@@ -5,7 +5,7 @@ class personinfo:
 
     personinfo_list = [] 
 
-    def __init__(self,username,password,email):
+    def __init__(self,login_name,username,password,email):
 
         self.login_name = login_name
         self.username = username
@@ -22,12 +22,13 @@ class personinfo:
         '''
 
         personinfo.personinfo_list.append(self)
-
+    
     def delete_personinfo(self):
 
         '''
         delete_personinfo method deletes a saved personinfo from the personinfo_list
         '''
 
-        personinfo.personinfo_list.remove(self)  
-      
+        personinfo.personinfo_list.remove(self)
+
+   
