@@ -44,3 +44,17 @@ class personinfo:
         for personinfo in cls.personinfo_list:
             if personinfo.username == username:
                 return personinfo
+ 
+    @classmethod
+    def personinfo_exist(cls,username):
+        '''
+        Method that checks if a personinfo exists from the personinfo list.
+        Args:
+            username: username to search for
+            Boolean: True or false depending if the personinfo exists
+        '''
+        for personinfo in cls.personinfo_list:
+            if personinfo.username == username:
+                    return True
+
+        return False

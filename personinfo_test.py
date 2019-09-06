@@ -73,7 +73,20 @@ class Testpersoninfo(unittest.TestCase):
 
         found_personinfo = personinfo.find_by_username("Uwishema")
 
-        self.assertEqual(found_personinfo.username,test_personinfo.username)           
+        self.assertEqual(found_personinfo.username,test_personinfo.username)  
+
+    def test_personinfo_exists(self):
+            '''
+            test to check if we can return a Boolean  if we cannot find the personinfo.
+            '''
+
+            self.new_personinfo.save_personinfo()
+            test_personinfo = personinfo("Jasmine","Uwishema","8882","uwishema10@gmail.com") 
+            test_personinfo.save_personinfo()
+
+            personinfo_exists = personinfo.personinfo_exist("Uwishema")
+
+            self.assertTrue(personinfo_exists)             
 
 if __name__ == '__main__':
     unittest.main() 
