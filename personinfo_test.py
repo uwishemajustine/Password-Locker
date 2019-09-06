@@ -13,7 +13,7 @@ class Testpersoninfo(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_personinfo = personinfo("Uwishema","8882","uwishema10@gmail.com") 
+        self.new_personinfo = personinfo("Jasmine","Uwishema","8882","uwishema10@gmail.com") 
 
 
     def test_init(self):
@@ -21,6 +21,7 @@ class Testpersoninfo(unittest.TestCase):
         test_init test case to test if the object is initialized properly
         '''
 
+        self.assertEqual(self.new_personinfo.login_name,"Jasmine")
         self.assertEqual(self.new_personinfo.username,"Uwishema")
         self.assertEqual(self.new_personinfo.password,"8882")
         self.assertEqual(self.new_personinfo.email,"uwishema10@gmail.com")
@@ -46,9 +47,20 @@ class Testpersoninfo(unittest.TestCase):
         objects to our personinfo_list
         '''
         self.new_personinfo.save_personinfo()
-        test_personinfo = personinfo("Uwishema","8882","uwishema10@gmail.com") 
+        test_personinfo = personinfo("Jasmine","Uwishema","8882","uwishema10@gmail.com") 
         test_personinfo.save_personinfo()
         self.assertEqual(len(personinfo.personinfo_list),2)
+
+    def test_delete_personinfo(self):
+        '''
+        test_delete_personinfo to test if we can remove a personinfo from our personinfo list
+        '''
+        self.new_personinfo.save_personinfo()
+        test_personinfot = personinfo("Jasmine","Uwishema","8882","uwishema10@gmail.com")
+        test_personinfo.save_personinfo()
+
+        self.new_personinfo.delete_personinfo()
+        self.assertEqual(len(Personinfo.personinfo_list),1)    
 
 if __name__ == '__main__':
     unittest.main() 
