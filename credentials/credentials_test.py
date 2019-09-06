@@ -49,6 +49,50 @@ class Testcredentials(unittest.TestCase):
         test_credentials.save_credentials()
         self.assertEqual(len(credentials.credentials_list),2)
 
+    def test_delete_credentials(self):
+        '''
+        test_delete_personinfo to test if we can remove a personinfo from our personinfo list
+        '''
+        self.new_credentials.save_credentials()
+        test_credentials = credentials("alsenj20@yahoo.com","199b")
+        test_credentials.save_credentials()
+
+        self.new_credentials.delete_credentials()
+        self.assertEqual(len(credentials.credentials_list),1)  
+
+    def test_find_credentials_by_twitter_account(self):
+        '''
+        test to check if we can find a credentials by twitter_account  and display information
+        '''
+
+        self.new_credentials.save_credentials()
+        test_credentials = credentials("alsenj20@yahoo.com","199b") # new credentials
+        test_credentials.save_credentials()
+
+        found_credentials = credentials.find_by_twitter_account("alsenj20@yahoo.com")
+
+        self.assertEqual(found_credentials.twitter_account,test_credentials.twitter_account)    
+
+    def test_credentials_exists(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find the credentials.
+        '''
+
+        self.new_credentials.save_credentials()
+        test_credentials = credentials("alsenj20@yahoo.com","199b") 
+        test_credentials.save_credentials()
+
+        credentials_exists = credentials.credentials_exist("alsenj20@yahoo.com")
+
+        self.assertTrue(credentials_exists)
+
+    def test_display_all_credentials(self):
+        '''
+        method that returns a list of all credentials saved
+        '''
+
+        self.assertEqual(credentials.display_credentials(),credentials.credentials_list)                 
+    
 
 if __name__ == '__main__':
     unittest.main()
