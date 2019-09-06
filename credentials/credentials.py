@@ -7,7 +7,7 @@ class credentials:
     credentials_list=[]
 
     def __init__(self,twitter_account,password):
-        self.twitter_account =twitter_account
+        self.twitter_account = twitter_account
         self.password = password
 
     def save_credentials(self):

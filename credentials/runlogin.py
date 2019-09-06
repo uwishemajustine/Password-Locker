@@ -1,21 +1,23 @@
 #!/usr/bin/env python3.6
-import random
-from personinfo import personinfo
+
 from credentials import credentials
+from personinfo import personinfo 
+import random
+
 
 def create_personinfo(login_name,username,password,email):
     '''
     Function to create a new personinfo
     '''
-    new_personinfo = personinfo(login_name,username,password,email)
+    new_personinfo = create_personinfo(login_name,username,password,email)
     return new_personinfo
 
 
 def create_credentials(twitter_account,password):
     """
-    Function to create new user credentials
+    Function to create new credentials
     """
-    new_credentials = credentials(twitter_account,password))
+    new_credentials = credentials("alsenj20@yahoo.com","199b")
     return new_credentials
 
 def save_personinfo(personinfo):
@@ -81,3 +83,88 @@ def display_credentials():
     Function that returns all the saved credentials
     '''
     return credentials.display_credentials()    
+
+
+def main():
+
+    print("Welcome to your Password Locker, choose your path from the list of allowed actions")
+    username = input()
+    print("\n")
+    print(f"Hello {username}.what would you like to do?")
+    while True:
+        print("\nUse these short codes below:")
+        print("-" * 12)
+        print("Use these short codes : ca - create a new account, gp - generate password, cp - create your password, ex -exit the account, da- display account")
+
+        short_code = input().lower()
+
+        if short_code == 'ca':
+            print("New account")
+            print("-" * 10)
+
+            print("\nEnter login_name ...")
+            login_name = input()
+
+            print("\nEnter username ...") 
+            username = input()
+
+            print("\nEnter a password ...")
+            password = input()
+
+            print("Enter an email ...")
+            email = input()
+
+            save_personinfo(create_personinfo(login_name, username, password, email)) 
+            save_credentials(create_credentials(twitter_account, password))
+            print('\n')
+            print(f"A new {site} Account by {login_name} {username} {password} {email} has successfully been created")  
+            print(f" The twitter_account is {twitter_account} and the password is {password}")
+            print('\n')
+
+
+        elif short_code == "gp":
+            print("\n create another account")
+            print("-"*15)
+            print("enter the account you created before")
+            site = input()
+            print(f"So you want to create a {site}?")
+
+            print("First name ....")
+            first_name = input()
+
+            print("Last name ...", )
+            last_name = input()
+
+            print("Phone number ...")
+            phone_number = input()
+
+            print("Email address ...")
+            email_address = input()
+
+            print("Enter username ... Hint: a secure password will be generated for you...")
+            user_name = input()
+
+            s = "abcdefghijklmnopqrstuvwxyz01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()?"
+            password = "".join(random.sample(s, 8))
+   
+            save_personinfo(create_personinfo(login_name, username, password, email)) 
+            save_credentials(create_credentials(twitter_account, password))
+            print('\n')
+            print(f"A new {site} Account by {login_name} {username} {password} {email} has successfully been created")  
+            print(f" The twitter_account is {twitter_account} and the password is {password}")
+            print('\n')
+  
+
+        elif short_code == "ex":
+            print(":/ See you soon then...")
+            break
+        else:
+            print(" :( Only key in the allowed actions !!")
+
+
+       
+
+
+if __name__ == '__main__':
+
+    main()
