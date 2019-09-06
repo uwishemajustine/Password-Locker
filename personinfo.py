@@ -58,3 +58,9 @@ class personinfo:
                     return True
 
         return False
+    @classmethod
+    def display_personinfo(cls):
+        '''
+        method that returns the personinfo list
+        '''
+        return cls.personinfo_list    
